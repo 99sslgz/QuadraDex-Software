@@ -1,0 +1,6 @@
+# Verified on 64-bit Windows, Python 3.11.5. Use opencv-contrib-python only,
+# because MediaPipe already depends on that OpenCV distribution.
+mediapipe==1.2.3
+opencv-contrib-python==5.0.0.93
+numpy==2.4.6
+cv2-enumerate-cameras==1.4.0

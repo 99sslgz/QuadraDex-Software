@@ -1,0 +1,15 @@
+# Local environments and generated files
+**/.venv/
+**/__pycache__/
+*.py[cod]
+**/models/
+**/logs/
+**/calibration*.json
+*.jsonl
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
