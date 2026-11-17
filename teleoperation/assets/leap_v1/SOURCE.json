@@ -1,0 +1,56 @@
+{
+  "repository": "https://github.com/leap-hand/LEAP_Hand_Sim",
+  "revision": "150bc3d4b61fd6619193ba5a8ef209f3609ced89",
+  "files": [
+    {
+      "path": "robot.urdf",
+      "sha256": "b3f29881e1c013f8b4eda85e9afecc6b2f4b89b5b49b643183ef6031422ed7f4",
+      "bytes": 20448
+    },
+    {
+      "path": "palm_lower.stl",
+      "sha256": "eae47756f1a1978b255a36c0b75c24c0af886d10026c2950a2b0acef66f09c8c",
+      "bytes": 4347184
+    },
+    {
+      "path": "mcp_joint.stl",
+      "sha256": "56af82c57b469d491f544d6de12e2696b4284b50e89ca271502aaa0631f04b59",
+      "bytes": 1608784
+    },
+    {
+      "path": "pip.stl",
+      "sha256": "b778405c95127023c8b110e6e2f5a181ad8a46dadc2ac98d3f038debae52ef33",
+      "bytes": 1051084
+    },
+    {
+      "path": "dip.stl",
+      "sha256": "9222f0ee1fa0077c70a219f7952df6f4208b003ad06a608e006cd0d8057d4b1c",
+      "bytes": 1538284
+    },
+    {
+      "path": "fingertip.stl",
+      "sha256": "e149e01e395b58950332dc2e2bda4b51b5557328a73c80b990d184c2e84dcc53",
+      "bytes": 562684
+    },
+    {
+      "path": "thumb_pip.stl",
+      "sha256": "40532d5d555e150748f8563fb378ab3d0839b9221eb5ef108e86fde01a98dfe0",
+      "bytes": 468884
+    },
+    {
+      "path": "thumb_dip.stl",
+      "sha256": "7261cf99cd44ae42360dc72a417c2526a73ec8ff4c446858042d6d0675b4f2bf",
+      "bytes": 1451484
+    },
+    {
+      "path": "thumb_fingertip.stl",
+      "sha256": "b43c5a13cf67a25da5ea64afafdcae2179b53971f940375c94656919d717dfb0",
+      "bytes": 1111984
+    },
+    {
+      "path": "LICENSE.txt",
+      "sha256": "5a91c3d709c2ee3a71f166b46e3208cebd83c0c7a870746c729b31a01f156984",
+      "bytes": 1062
+    }
+  ]
+}

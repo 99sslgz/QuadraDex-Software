@@ -286,7 +286,7 @@ def draw(frame, image_points, measurement, state, reason, metrics, note, mirror,
     def label(text, y, scale=.52, ink=(230, 230, 230)):
         cv2.putText(panel, text, (18, y), cv2.FONT_HERSHEY_SIMPLEX, scale, ink, 1, cv2.LINE_AA)
 
-    label("QUADRADEX / HAND TRACKING", 30, .72)
+    label(ui.get("title", "QUADRADEX / HAND TRACKING"), 30, .72)
     label(ui.get("camera_name", "Camera")[:58] + "  |  V: choose camera", 58, .46)
     label(state.replace("_", " "), 96, .72, color)
     for i, line in enumerate(textwrap.wrap(reason, width=72)[:2]):

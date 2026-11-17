@@ -1,0 +1,2 @@
+-r ../cv_hand_tracking/requirements.txt
+mujoco==3.14.0

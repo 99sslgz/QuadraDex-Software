@@ -4,3 +4,9 @@
 *.txt text eol=lf
 *.bat text eol=crlf
 *.pdf binary
+*.stl binary
+*.urdf text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+# Preserve whitespace in the pinned, unmodified upstream model.
+teleoperation/assets/leap_v1/robot.urdf -whitespace

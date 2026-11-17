@@ -1,0 +1,18 @@
+{
+  "name": "Configurable 7-DOF demo arm (not a selected physical robot)",
+  "upper_arm_m": 0.30,
+  "forearm_m": 0.26,
+  "base_height_m": 0.55,
+  "home_rad": [0, -0.5, 0, 1.25, 0, -0.75, 0],
+  "lower_rad": [-2.8, -1.8, -2.8, 0.0, -2.8, -1.7, -2.8],
+  "upper_rad": [2.8, 1.2, 2.8, 2.6, 2.8, 1.7, 2.8],
+  "max_velocity_rad_s": 1.0,
+  "hand_max_velocity_rad_s": 2.0,
+  "translation_scale": 0.8,
+  "mount_xyz_m": [0.055, 0, 0],
+  "mount_rpy_rad": [0, -1.5707963267948966, 0],
+  "workspace_lower_m": [0.08, -0.55, 0.15],
+  "workspace_upper_m": [0.75, 0.55, 1.05],
+  "arm_fit_tolerance_m": 0.03,
+  "hand_fit_tolerance_m": 0.025
+}
