@@ -2,9 +2,9 @@
 
 Software for the QuadraDex dexterous hand teleoperation robotics capstone.
 
-The software includes a close-up hand-tracking prototype and an experimental full-arm + hand teleoperation simulator. The latter tracks shoulder, elbow, wrist and fingers, generates bounded joint targets, and visualizes a configurable seven-joint arm carrying the official LEAP Hand V1 model.
+The software includes a close-up hand-tracking prototype and an experimental full-arm + hand teleoperation simulator. The latter tracks shoulder, elbow, wrist and fingers, generates bounded joint targets, and visualizes a configurable seven-joint arm carrying the official LEAP Hand V1 model at a bench with the project's evaluation objects.
 
-![Synthetic arm and LEAP V1 simulation preview](docs/simulation_preview.png)
+![Simulated follower station: demo arm, LEAP V1 hand and evaluation objects](docs/simulation_preview.png)
 
 ## Run the full-arm and LEAP simulator
 
@@ -14,7 +14,7 @@ On 64-bit Windows with Python 3.11 installed, open PowerShell in this repository
 .\run_teleop.bat
 ```
 
-Select a camera, keep both shoulders/hips and the selected arm/fingers visible, capture the open/neutral pose with **O**, capture the closed pose with **C**, then press **Space** to start the simulated target stream. The calibration display shows progress and pause/retry guidance. The separate 3D window supports orbit/zoom and **F** for a close hand view.
+Select a camera and keep your head, both shoulders and the selected arm/fingers visible (hips are not needed). The "What the camera sees" panel shows which landmark is missing, if any. Choose one or two cameras at start-up; with two cameras (front + side, 45-90 degrees apart) a short automatic setup has you move your arms for about 15 s, and the two views are then triangulated so overlapping or folded arm/hand poses stay trackable. Take the start pose (upper arm down, forearm up, open palm facing the camera) and press **O**; the robot computes a matching pose. Make a fist and press **C**, then press **Space**: the robot moves slowly to your pose, then follows you. Brief tracking gaps hold the robot; longer ones stop the stream until you press Space. Limits, camera failures and internal errors hold the robot and tell you what to do; the program only exits on **Q/Esc** or when you close a window. The 3D window supports orbit/zoom, **[ ]** for fixed cameras and **F8** to follow the hand.
 
 To try generated arm/finger motion without a camera:
 
@@ -57,7 +57,7 @@ After the launcher has installed the dependencies:
 .\cv_hand_tracking\.venv\Scripts\python.exe -m unittest teleoperation.test_teleoperation -v
 ```
 
-The suites contain 17 hand-only and 14 arm/control/simulation checks. Real-model and synthetic application integration checks exercised loss/recovery, packet delivery, camera switching, guided paired calibration and simulated command execution. The guides distinguish these from physical-hand/arm and hardware validation.
+The suites contain 17 hand-only and 50 arm/control/simulation checks. Real-model and synthetic application integration checks exercised loss/recovery, packet delivery, camera switching, guided paired calibration and simulated command execution. The guides distinguish these from physical-hand/arm and hardware validation.
 
 ## Integration status
 

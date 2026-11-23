@@ -37,13 +37,13 @@ def fit_image(image, width, height):
     return result
 
 
-def picker_view(devices, selected, frame=None, status="Opening preview...", backend="msmf"):
+def picker_view(devices, selected, frame=None, status="Opening preview...", backend="msmf", title="Choose your tracking camera"):
     view = np.full((700, 1160, 3), (24, 27, 32), dtype=np.uint8)
 
     def text(line, xy, scale=.55, color=(230, 233, 238)):
         cv2.putText(view, line, xy, cv2.FONT_HERSHEY_SIMPLEX, scale, color, 1, cv2.LINE_AA)
 
-    text("Choose your tracking camera", (28, 43), .9)
+    text(title, (28, 43), .9)
     text("Select a device on the left, check its live preview, then choose Use camera.", (28, 76))
     text(f"Camera connection: {backend.upper()}   |   B: try other connection", (28, 111), .48)
     for row, device in enumerate(devices[:9]):
@@ -66,10 +66,16 @@ def picker_view(devices, selected, frame=None, status="Opening preview...", back
     return view
 
 
-def choose_camera(camera_factory, args):
-    """Return (choice, open_reader), or None. Never selects without user input."""
+def choose_camera(camera_factory, args, title="Choose your tracking camera", exclude=()):
+    """Return (choice, open_reader), or None. Never selects without user input.
+
+    exclude: camera indices already in use (for example the first of two cameras)."""
     backend = "msmf" if args.backend == "auto" and sys.platform == "win32" else args.backend
-    devices = discover_cameras(backend)
+
+    def discover(backend):
+        return [device for device in discover_cameras(backend) if device.index not in exclude]
+
+    devices = discover(backend)
     selected = 0
     current = None
     pending = queue.Queue()
@@ -140,7 +146,7 @@ def choose_camera(camera_factory, args):
                 status = f"{devices[selected].name} | {frame.image.shape[1]} x {frame.image.shape[0]} | preview ready"
             elif time.perf_counter() - opening_since > 6:
                 status = "No preview yet. Close other camera apps, choose another camera, or press B."
-            cv2.imshow(PICKER_WINDOW, picker_view(devices, selected, frame, status, backend))
+            cv2.imshow(PICKER_WINDOW, picker_view(devices, selected, frame, status, backend, title))
             key = cv2.waitKeyEx(15)
             if cv2.getWindowProperty(PICKER_WINDOW, cv2.WND_PROP_VISIBLE) < 1 or key in (27, ord("q")):
                 return None
@@ -161,7 +167,7 @@ def choose_camera(camera_factory, args):
             elif key in (ord("r"), ord("b")):
                 if key == ord("b") and sys.platform == "win32":
                     backend = "dshow" if backend != "dshow" else "msmf"
-                devices, selected, changed = discover_cameras(backend), 0, True
+                devices, selected, changed = discover(backend), 0, True
             if changed:
                 start_preview()
             elif key in (10, 13) and frame is not None:
